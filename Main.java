@@ -1,45 +1,27 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
-    static Scanner scanner = new Scanner(System.in);
-    static List<Student> students = new ArrayList<>();
-
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         while (true) {
-            System.out.println("\n== Student Course Management ==");
+            System.out.println("\n===== Student Management Menu =====");
             System.out.println("1. Add Student");
             System.out.println("2. List Students");
-            System.out.println("3. Exit");
-            System.out.print("Choose: ");
+            System.out.println("3. Update Student");
+            System.out.println("4. Delete Student");
+            System.out.println("5. Exit");
 
-            int choice = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            System.out.print("Choose option: ");
+            int choice = sc.nextInt();
+            sc.nextLine(); // consume newline
 
-            if (choice == 1) addStudent();
-            else if (choice == 2) listStudents();
-            else if (choice == 3) break;
-            else System.out.println("Invalid option.");
-        }
-    }
-
-    static void addStudent() {
-        System.out.print("ID: ");
-        String id = scanner.nextLine();
-        System.out.print("Name: ");
-        String name = scanner.nextLine();
-        System.out.print("Email: ");
-        String email = scanner.nextLine();
-
-        students.add(new Student(id, name, email));
-        System.out.println("✅ Student added.");
-    }
-
-    static void listStudents() {
-        if (students.isEmpty()) {
-            System.out.println("No students found.");
-        } else {
-            for (Student s : students) {
-                System.out.println(s);
+            switch (choice) {
+                case 1: StudentManager.addStudent(); break;
+                case 2: StudentManager.listStudents(); break;
+                case 3: StudentManager.updateStudent(); break;
+                case 4: StudentManager.deleteStudent(); break;
+                case 5: System.exit(0);
+                default: System.out.println("❌ Invalid option");
             }
         }
     }

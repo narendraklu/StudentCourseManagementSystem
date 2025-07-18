@@ -13,7 +13,9 @@ public class Student {
     public String getName() { return name; }
     public String getEmail() { return email; }
 
-    @Override
+    public void setName(String name) { this.name = name; }
+    public void setEmail(String email) { this.email = email; }
+
     public String toString() {
         return id + " | " + name + " | " + email;
     }
